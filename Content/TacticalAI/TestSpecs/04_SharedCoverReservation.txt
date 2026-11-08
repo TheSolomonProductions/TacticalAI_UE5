@@ -1,0 +1,5 @@
+ARENA TEST 04 — COBERTURA COMPARTILHADA
+=======================================
+Setup: dois bots, um ponto Capacity=1 e outro ponto válido.
+Esperado: um claim, outro escolhe alternativa; TTL expira se owner removido; saída/morte libera claim.
+Registrar: owner, expiry, query score, eventos Claim/Release.

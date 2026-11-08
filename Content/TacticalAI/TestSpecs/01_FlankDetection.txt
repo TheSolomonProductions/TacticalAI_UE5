@@ -1,0 +1,6 @@
+ARENA TEST 01 — DETECÇÃO PELO FLANCO
+====================================
+Setup: bot em patrulha; jogador entra no cone periférico parcialmente exposto e depois se move para cover.
+Esperado: awareness sobe mais devagar que em visão central; Suspected antes de Detected; bark/virada de cabeça legível; após perda, belief/confidence decai e última posição permanece estimada.
+Falha se: Engage instantâneo sem threshold; awareness não considera exposure/periphery; bot rastreia posição oculta.
+Registrar: tempo até Suspected/Detected, ray budget, layer transitions.

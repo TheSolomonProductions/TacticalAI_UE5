@@ -1,0 +1,5 @@
+ARENA TEST 05 — LIMITE DE ATTACK TOKENS
+=======================================
+Setup: squad de 4 sob ameaça conhecida, Attack token max=2.
+Esperado: no máximo dois bots atacam com intenção precisa simultaneamente; demais suprimem passivamente ou se reposicionam; fila por idade evita starvation.
+Registrar: holders, wait age, token duration, fairness/starvation rate.

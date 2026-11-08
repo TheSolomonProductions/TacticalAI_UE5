@@ -1,0 +1,9 @@
+BLUEPRINT SPEC — BPL_Layer_Search
+=================================
+
+Prioridade: 45. Evaluate: estado Searching e Confidence > 0,2, sem engage ativo.
+OnEnter: solicitar SearchArea do BeliefComponent; criar lista de pontos não varridos.
+Tick: usar FindSearchPoints EQS; percorrer área por setores, olhar/pausar, registrar setores vistos vazios; preservar dispersão do esquadrão para evitar duplicação.
+On threat reacquired: permitir Engage assumir; atualizar belief com sensor.
+OnExit/timeout: marcar progresso, limpar claims e retornar a Objective/Patrol se Lost.
+Não convergir para a posição atual do jogador depois da última visão.

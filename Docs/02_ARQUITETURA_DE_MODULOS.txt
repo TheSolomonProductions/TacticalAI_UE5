@@ -1,0 +1,39 @@
+ARQUITETURA DE MÓDULOS E CONTRATOS
+===================================
+
+1. Core
+ATacticalAIController implementa IGenericTeamAgentInterface e possui/coordena perception, brain, beliefs, combat e vínculo com squad. FBotContext agrega referências seguras e dados de leitura para layers. FBotIntent é um pedido declarativo: MoveTo, LookAt, Stance, FireMode, TargetBeliefId, bRequestReload, bRequestGrenade. Evitar que layer mova diretamente o Pawn.
+
+2. Perception
+UBotPerceptionComponent encapsula UAIPerceptionComponent. Converte Sight/Hearing/Damage/Team para FBotStimulus normalizado. FSightEvaluator computa cone, exposição e awareness rate. FHearingModel calcula intensidade, oclusão e erro de posição. Perception não escolhe layer.
+
+3. Beliefs
+UBotBeliefComponent consome estímulos, mantém FThreatBelief por ameaça, atualiza confiança/estados, áreas de busca e memória. Eventos públicos: OnThreatStateChanged, OnBeliefUpdated, OnSearchAreaCreated. Nunca revelar posição atual se sensor não a sustenta.
+
+4. Brain/Layers
+UBotBrainComponent executa Decide em intervalo escalonado. UBotBrainDefinition configura layers; UBotBrainRegistry permite extensão. UBotLayer define Evaluate, OnEnter, Tick, OnExit, prioridade, MinRunTime e interruptibilidade. Arbiter escolhe primeira layer elegível em prioridade decrescente, com histerese/emergência e DecisionTrace.
+
+5. Tactics
+UCoverSubsystem consulta pontos baked/dinâmicos, faz claims com TTL e escolhe pontos. FCoverPoint descreve dados estáticos e capacidade; ocupação é runtime. EQS gera candidatos e usa testes baratos antes de traces. UTacticalNavFilter aumenta custos de rota exposta a ameaças conhecidas.
+
+6. Combat
+UBotCombatComponent executa cadência/rajada, recarga, uso de granada, supressão e estados do combate. UAimModel aplica reação, aquisição gradual, erro, movimento, supressão e tempo no alvo. Disparo valida linha amiga e consome token adequado.
+
+7. Squad
+USquadSubsystem registra grupos; ASquad armazena membros, líder, papéis, plano, crença compartilhada e tokens. USquadPlanner reavalia utilidade/HTN simplificado. UBarkSystem ordena falas e cooldowns. Comunicação tem atraso, perda e erro de localização.
+
+8. Dados e Debug
+UBotProfile e UDifficultyTier são PrimaryDataAssets. BrainDefinition contém lista de layer entries/tags. FDecisionTrace e Gameplay Debugger expõem motivo, scores, crenças, claims, papel e tokens. Visual Logger suporta replay/scrubbing.
+
+9. Animação/Apresentação
+BP_BotAnimationBridge liga intents e eventos de combate ao AnimInstance: Aim Offset, upper-body fire/reload, peek/lean, reações a dano/supressão e barks/lip sync. Anim Notifies podem confirmar o instante do disparo.
+
+10. Modelos auxiliares
+FHearingModel calcula ruído/oclusão/erro; MoraleModel combina disciplina, aliados, ameaças, supressão, HP e munição; SuppressionModel acumula e decai near-misses. Mantê-los como funções puras/testáveis em C++ e expor tuning para Blueprints/DataAssets.
+
+OWNERSHIP / DEPENDÊNCIAS
+Controller cria/amarra componentes -> Perception publica FBotStimulus -> Beliefs atualiza -> Brain avalia -> Layer grava FBotIntent / solicita serviço tático -> executores consomem intent -> Squad oferece plano/tokens.
+Evitar dependência circular entre Layer e Layer. Comunicação entre módulos ocorre por contexto limitado, eventos, intents, beliefs e interfaces de serviço.
+
+SERVER
+Percepção, decisão e tiros têm autoridade do servidor. Replicar somente estado do Pawn necessário para apresentação. Manter estado interno da IA no servidor.

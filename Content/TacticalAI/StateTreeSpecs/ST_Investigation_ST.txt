@@ -1,0 +1,8 @@
+STATETREE SPEC — ST_Investigation
+=================================
+
+Enter: stimulus suspeito com localização incerta. States: PauseAndListen -> CautiousMove -> Scan -> Resolve.
+PauseAndListen: bark/olhar; esperar pequena janela de novos eventos.
+CautiousMove: mover para ponto alcançável perto da estimativa, usando incerteza; reduzir ruído.
+Scan: varrer setores, permitir sensores atualizarem beliefs; não forçar detecção.
+Resolve: nova crença forte -> Engage; sem evidência e timeout -> Patrol/Objective; stimulus não resolvido -> Search.

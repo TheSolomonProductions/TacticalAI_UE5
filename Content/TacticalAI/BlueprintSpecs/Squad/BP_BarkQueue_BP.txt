@@ -1,0 +1,7 @@
+BLUEPRINT SPEC — BP_BarkQueue / UBarkSystem
+===========================================
+
+Categorias: Contact (alta), Tactical (média), State (média), Casualty (alta), Ambient (baixa).
+Enqueue(BarkId, Category, Priority, Bot, CooldownCategory): validar contexto/linha de audição; pedir token Bark (máx 1, cooldown inicial 1,5 s); ordenar por prioridade e expiração; suprimir duplicatas.
+Playback: iniciar audio/VO local via evento replicado, anim/lip sync se existente; release token; aplicar cooldown por categoria/bot.
+Barks também podem ser estímulos auditivos para bots aliados/inimigos segundo regras do jogo.

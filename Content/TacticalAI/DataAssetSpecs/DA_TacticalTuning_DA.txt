@@ -1,0 +1,9 @@
+DATAASSET SPEC — UBotTacticalTuning
+===================================
+
+Centralizar números globais nomeados quando não forem específicos do profile/tier.
+Perception: Dnear 10m, Dfar 70m; grace 0,4s; awareness thresholds 0,3/1,0; confidence decay exemplo 0,15/s; LOS cache 0,1–0,2s.
+Timing: brain 0,1–0,3s; squad planner 0,5–1,0s; team comm 0,5–1,5s.
+Squad: attack token cap por tier; flank cooldown 10–20s; grenade cooldown 8–15s; bark cooldown ~1,5s; spacing 2–3m.
+Claims: cover TTL ~8s. Performance: budget de traces/frame e tempo EQS configuráveis por mapa/LOD.
+Cada variável deve ter unidade, domínio permitido, default, motivo e métrica de tuning.

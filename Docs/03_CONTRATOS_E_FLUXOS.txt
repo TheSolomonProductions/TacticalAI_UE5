@@ -1,0 +1,39 @@
+CONTRATOS DE DADOS, EVENTOS E FLUXOS
+=====================================
+
+FBotStimulus (sensor -> beliefs)
+Source: referência opcional ao emissor; Type: Sight/Hearing/Damage/Team; Location: localização percebida; Strength: intensidade normalizada; Time: timestamp; bFromTeam: origem compartilhada; opcional: uncertainty radius, direction, instigator team.
+
+FThreatBelief (beliefs -> brain/tática)
+Actor fraco/opcional; LastKnownLocation; LastKnownVelocity; Awareness 0..1.5; Confidence 0..1; FirstSeenTime/LastSeenTime/LastHeardTime; EThreatState {Suspected, Detected, Engaged, Searching, Lost}; bVisibleNow; bSharedBySquad; uncertainty/search radius. Atualização visível = confiança 1; oculta = decaimento; som/dano = posição aproximada.
+
+FBotIntent (layer -> executores)
+Campos opcionais: MoveDestination; LookTarget/LookLocation; Stance; EFireMode; belief/target ID; request peek, reload, grenade, heal; desired speed; expire time; debug reason. Intent é substituível por prioridade e expira para evitar comandos velhos. Layer não chama SimpleMoveTo diretamente.
+
+FLayerEntry
+Layer class/object instanciado; PriorityOverride; GameplayTagQuery Requires. Registro de plugin só ocorre quando módulo/feature ativa e é revertido em desativação.
+
+FDecisionTrace
+Timestamp; previous/new layer; Evaluate score; prioridade; motivo legível; belief IDs/confidence relevantes; intent resumido; seed opcional. Buffer circular por bot (~32 transições iniciais).
+
+TOKEN CONTRACT
+TryAcquireToken(TokenType, Requester, WaitSince) -> granted/reason. Token reentrante para dono existente; respeita max simultaneous, cooldown e fila por espera. Release em conclusão, cancelamento, morte e OnExit. Tokens iniciais: Attack, Flank, Grenade, Bark.
+
+COVER CLAIM CONTRACT
+TryClaim(PointId, Bot, Priority, TTL); RenewClaim; ReleaseClaim. Expira por tempo e é limpo em morte/remoção do bot. Claim roubado somente por prioridade/papel superior e notifica antigo dono.
+
+EVENTOS RECOMENDADOS
+OnStimulusReceived -> BeliefComponent
+OnBeliefUpdated / OnThreatStateChanged -> Brain e Squad
+OnLayerEntered / OnLayerExited -> Trace e debug
+OnIntentChanged -> Movement/Combat executors
+OnTokenGranted/Denied/Released -> Planner/debug
+OnCoverClaimed/Expired/Released -> Tactics/debug
+OnSquadLeaderChanged / OnSquadPlanChanged -> Squad members
+OnBotDied -> liberar claims/tokens/role e eleger líder
+
+INTERVALOS INICIAIS
+Brain 0,1–0,3 s com jitter; planner squad 0,5–1,0 s; envio team stimulus 0,5–1,5 s; visão com cache LOS TTL 0,1–0,2 s; claim cobertura TTL ~8 s. Medir e ajustar.
+
+ANTI-WALLHACK GATE
+Layers, StateTrees, EQS Contexts e Tasks não podem descobrir o Pawn do jogador por busca global. Alvo tático é resolvido por belief. Visão real só é acessada pelo sensor autorizado, que emite resultado de percepção.

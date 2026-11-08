@@ -1,0 +1,8 @@
+BLUEPRINT SPEC — BPL_Layer_Patrol
+=================================
+
+Prioridade: 30. Evaluate: não há objetivo, ameaça suspeita nem ordem ativa; patrol route válida.
+OnEnter: escolher próximo waypoint/POI com variação data-driven.
+Tick: patrulhar, ajustar velocidade/stance e emitir ruído de passos; em POI, pausa e varredura visual.
+Concluir waypoint -> próximo ponto; stimulus relevante aciona Investigate/Engage.
+Evitar rota determinística repetitiva usando pesos leves, sem teletransportar conhecimento.

@@ -1,0 +1,28 @@
+REDE, PERFORMANCE E OBSERVABILIDADE
+====================================
+
+REDE
+- Servidor autoritativo: AAIController, sensores, decisões e disparo rodam no servidor/host.
+- Replicar postura, aim rotation e flags de animação necessários; não replicar brain/belief interno inteiro.
+- Barks/efeitos por evento replicado ou multicast não confiável; áudio toca localmente.
+- Registrar seed do encontro facilita reprodução. Validar hit registration/latência no jogo real.
+
+PERFORMANCE — defaults apenas para orçamento inicial
+- Brain 0,1–0,3 s por bot, com jitter e fila circular.
+- Vision: MaxTracesPerTick, early-outs por distância/cone, async trace e cache LOS TTL 0,1–0,2 s.
+- EQS: MaxAllowedTestingTime configurado, cache e staggering.
+- Meta de referência: custo amortizado abaixo de ~0,1–0,15 ms por bot; medir em hardware-alvo.
+- Evitar alocação por tick no caminho quente; usar pool/structs.
+- AI LOD: pleno perto/em combate; reduzido distante (brain ~0,5s, percepção/animação simplificadas); dormente quando irrelevante, acordado por eventos.
+- Instrumentar com Unreal Insights, TRACE_CPUPROFILER_EVENT_SCOPE e DECLARE_CYCLE_STAT.
+
+DEBUG
+- Gameplay Debugger: layer ativa, beliefs/confidence/age, cover claim, role, tokens.
+- Visual Logger: linhas/esferas e decisões com scrubbing temporal.
+- DecisionTrace circular por bot: ~32 transições, score, motivo e seed opcional.
+- EQSTestingPawn e visualizadores de cobertura/patrulha/zonas.
+- Comandos de desenvolvimento propostos: ai.bot.debug <id>, ai.bot.freeze, ai.bot.forcelayer <layer>, ai.bot.step.
+- Debug deve ser desligável e não expor informação de IA ao jogador.
+
+MÉTRICAS
+TTFS; percentual em cover; sucesso de flanco; starvation de tokens; stuck; layer changes/segundo; decisão p95; CPU por bot; EQS/traces por frame.

@@ -1,0 +1,14 @@
+BLUEPRINT SPEC — BP_SquadPlanner
+================================
+
+Tick de planejamento: 0,5–1,0 s, independente dos ticks dos membros.
+Inputs: beliefs compartilhadas (age/confidence), membros vivos/roles/HP/ammo, cobertura conhecida, objetivo, recursos/tokens, tática recente.
+Avaliar Utility com pesos/ruído limitado:
+- HoldPosition: defesa/objetivo forte.
+- AdvanceByBounds: ameaça conhecida + cobertura intermediária.
+- SuppressAndFlank: alvo fixo + rota lateral; atribuir Suppressor/Flanker; pedir token flank.
+- Search/Cordon: ameaça perdida; dividir setores e pontos.
+- Retreat: baixas/moral do grupo.
+- Breach: ameaça conhecida em cômodo; stack/flash/entry e segurança.
+Aplicar penalidade de repetição; selecionar plano; distribuir roles/orders; expirar ordem; emitir barks telegráficos.
+Se nenhuma informação útil, conservar plano anterior curto ou voltar ao objetivo; não fabricar localização do alvo.

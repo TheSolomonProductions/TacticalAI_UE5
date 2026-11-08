@@ -1,0 +1,9 @@
+BLUEPRINT SPEC — BPL_Layer_AvoidGrenade
+=======================================
+
+Prioridade: 75. Interruptível: não durante evasão crítica; compromisso curto.
+Evaluate: belief/evento de explosivo conhecido dentro do DangerRadius e fuse ainda ativo.
+OnEnter: determinar direção/raio do perigo percebido; bark “granada” se cooldown; interromper fogo.
+Tick: calcular vetores de fuga usando posição/raio conhecidos; consultar NavMesh e aliados; buscar ponto seguro fora do raio, sem atravessar perigo. Intent inclui sprint/duck conforme distância e jogo.
+OnExit: limpar estado de evasão e retornar decisão ao brain.
+Segurança: não inventar granada invisível ao sensor; evento deve vir de estímulo/visibilidade/áudio válido.

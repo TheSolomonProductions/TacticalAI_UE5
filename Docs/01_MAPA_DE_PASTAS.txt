@@ -1,0 +1,38 @@
+MAPA DE PASTAS E RESPONSABILIDADES
+===================================
+
+Raiz do projeto Unreal que deverá conter o scaffold:
+
+TacticalFPS.uproject                         [criar no Unreal Editor]
+Config/                                      [configuração do jogo e IA]
+Content/TacticalAI/
+  BlueprintSpecs/                            [documentação TXT dos graphs]
+    Core/ Perception/ Beliefs/ Brain/ Layers/
+    Tactics/ Squad/ Combat/ Execution/ Debug/
+  DataAssetSpecs/                            [conteúdo e parâmetros data-driven]
+  EQSSpecs/                                  [queries, contexts e testes]
+  StateTreeSpecs/                            [submáquinas de Engage/Patrol/Search]
+  TestSpecs/                                 [arenas e casos funcionais]
+Plugins/TacticalAI/
+  TacticalAI.uplugin                        [criar depois da implementação inicial]
+  Source/TacticalAI/
+    Public/Core/ Perception/ Beliefs/ Brain/ Layers/ Tactics/
+    Public/Squad/ Combat/ Data/ Debug/
+    Private/Core/ Perception/ Beliefs/ Brain/ Layers/ Tactics/
+    Private/Squad/ Combat/ Data/ Debug/
+  Config/                                    [opções do módulo, se necessário]
+Docs/                                        [arquitetura, contratos, roadmap]
+
+CONVENÇÃO DOS DOCS
+- Um arquivo *_BP.txt descreve um Blueprint ou classe Blueprintable.
+- Um arquivo *_DA.txt descreve um DataAsset.
+- Um arquivo *_EQS.txt descreve uma query EQS.
+- Um arquivo *_ST.txt descreve uma StateTree/submáquina.
+- Pasta/arquivo acompanha o nome lógico previsto para o asset; nomes de classe e propriedades seguem convenção Unreal.
+- Especificações TXT são fonte de implementação humana, não assets importáveis pela engine.
+
+NOMES UNREAL RECOMENDADOS
+- C++: A (Actor), U (UObject/UActorComponent), F (struct), E (enum), I (interface).
+- Blueprint de classe: BP_ + nome PascalCase; Blueprint de layer: BPL_ + nome; DataAsset: DA_ + nome.
+- Gameplay Tags: Brain.Rifleman, Layer.Engage, Role.Flanker, State.Searching, Stimulus.Gunshot.
+- Pastas de conteúdo por domínio; evitar nomes ambíguos como NewBlueprint ou BP_Test2.

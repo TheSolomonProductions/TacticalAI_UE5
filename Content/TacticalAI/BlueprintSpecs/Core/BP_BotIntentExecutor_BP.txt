@@ -1,0 +1,15 @@
+BLUEPRINT SPEC — BP_BotIntentExecutor
+====================================
+
+Tipo: componente/adapter de execução; caminho de alta frequência preferencialmente C++.
+Entrada: FBotIntent atual + profile + pawn/controller.
+Tick em taxa de frame (ou sub-tick):
+1. Se intent expirou, zerar Move/Fire request e manter estado seguro.
+2. Se MoveDestination mudou materialmente, solicitar MoveTo usando filtro tático; não emitir novo path request a cada frame.
+3. Atualizar LookTarget com rotação limitada e AimModel; sem snap.
+4. Aplicar Stance/speed e ruído associado.
+5. Enviar FireMode para CombatComponent, que valida LOS, alvo conhecido, aliado na linha e Attack token.
+6. Consumir reload/grenade/heal uma única vez por intent id; confirmar status ao brain.
+
+Eventos: OnMoveCompleted, OnMoveFailed, OnStuck, OnActionStarted/Finished.
+Debug: mostrar intent id, destino, status e origem da decisão.

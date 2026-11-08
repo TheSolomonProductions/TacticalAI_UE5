@@ -1,0 +1,10 @@
+BLUEPRINT SPEC — BP_BotMovementExecutor
+=======================================
+
+Usar CharacterMovement + NavMesh; CrowdFollowing/Detour ou RVO para colisão entre bots. Recebe apenas intent.
+OnNewMoveIntent: comparar destino com pedido ativo; emitir MoveTo uma vez quando mudou além de tolerância. Aplicar UTacticalNavFilter sob fogo.
+Speed/Stance: caminhar/correr/agachar ajustam noise emitter. Perfil de velocidade + intenção atual.
+Cantos: executar slice-the-pie por pontos de observação e rotação gradual.
+Smart Nav Links: emitir evento traversal e bloquear layer com status não-interrompível enquanto montage/link executa.
+Stuck: sem progresso por N segundos -> OnStuck, cancelar/reeleger rota e registrar localização/intent/layer.
+Evitar alterar destino a cada tick; preservar path stability.

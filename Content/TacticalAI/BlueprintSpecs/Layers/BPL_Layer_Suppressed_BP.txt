@@ -1,0 +1,8 @@
+BLUEPRINT SPEC — BPL_Layer_Suppressed
+=====================================
+
+Prioridade: 60. Evaluate: Suppression >= entrada; saída abaixo de limiar menor após delay/histerese.
+OnEnter: buscar abrigo próximo; postura baixa; cancelar peek voluntário.
+Tick: manter cobertura, tiro cego/supressivo apenas se regras e token permitirem; reduzir precisão pelo AimModel; atualizar moral.
+OnExit: retomar Engage/Order quando suppression decair ou abrigo obtido.
+Layer não deve monopolizar indefinitely: ter cooldown, condição de saída e trace explicável.

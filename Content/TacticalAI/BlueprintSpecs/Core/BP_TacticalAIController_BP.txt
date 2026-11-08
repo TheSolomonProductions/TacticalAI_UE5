@@ -1,0 +1,30 @@
+BLUEPRINT SPEC — BP_TacticalAIController
+========================================
+
+Tipo: Blueprint child de ATacticalAIController (base C++).
+Papel: compor componentes, selecionar dados do bot, iniciar brain e encaminhar interfaces; não implementar percepção pesada no graph.
+
+COMPONENTES (preferir criados na base C++)
+BotPerceptionComponent; BotBeliefComponent; BotBrainComponent; BotCombatComponent; BotIntentExecutor; SquadLink.
+
+VARIÁVEIS EDITÁVEIS
+BotProfile (DA_BotProfile); BrainDefinition (DA_Brain_Rifleman default); DifficultyTier; SquadId; bEnableDebug.
+
+EVENT GRAPH
+Event OnPossess(InPawn):
+1. Cast/validar TacticalBotPawn; se inválido, log error e return.
+2. Aplicar Profile e DifficultyTier aos componentes.
+3. Vincular callbacks OnStimulusReceived -> BeliefComponent.ConsumeStimulus.
+4. Vincular Belief events -> BotBrainComponent.MarkDecisionDirty e SquadLink.PublishEligibleBelief.
+5. Montar layers de BrainDefinition + layers registradas que satisfaçam GameplayTags do bot.
+6. Inicializar executores e aplicar team attitude.
+7. Se debug habilitado, registrar DecisionTrace e categoria debug.
+
+EVENT OnUnPossess / OnDestroyed:
+Cancelar queries pendentes; liberar Cover claim, tokens e papel; desvincular delegates; limpar intents expiradas.
+
+FUNÇÕES
+GetBotContext (read-only snapshot); SetSquad(ASquad); ApplyProfile; RequestDecision(reason); GetKnownThreats.
+
+RESTRIÇÕES
+Controller não lê posição de jogador por busca global. Não dispara por conta própria. Autoridade do servidor para decisão.

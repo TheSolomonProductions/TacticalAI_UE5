@@ -1,0 +1,22 @@
+DATAASSET SPEC — UBotProfile
+============================
+
+PrimaryDataAsset: DA_BotProfile_<Nome>. Um profile define personalidade/tuning, não lógica.
+
+COGNIÇÃO
+ReactionTimeRange (s); AwarenessMul; SightRangeM; HearingRangeMul; peripheral multiplier; confidence decay; memory duration.
+
+COMBATE
+Accuracy 0..1; BaseAimErrorDeg; MaxAimAngularSpeed; BurstLength; BurstPause; ideal range; recoil control; grenade preference; retreat HP.
+
+PERSONALIDADE
+Aggression 0..1; Discipline 0..1; risk tolerance; formation obedience.
+
+TÁTICA
+FTacticalWeights: protection, field of fire, proximity, flank, escape route, crowding, recency, route exposure; morale threshold; suppression thresholds.
+
+BRAIN
+LayerPriorityOverrides; BrainTag; role tags; optional map/faction requirements.
+
+VALIDATION
+Clamp normalized values; ranges min<=max; no profile may bypass perception beliefs or fairness gates. Tiers compose/tune profile with explicit precedence and log final values.

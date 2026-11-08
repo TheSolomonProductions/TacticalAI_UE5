@@ -1,0 +1,4 @@
+ARENA TEST 06 — MORTE DO LÍDER
+==============================
+Setup: líder morre durante plano ativo.
+Esperado: tokens/claims limpos; sucessor eleito; bark de baixa; planner faz reavaliação curta; papéis não ficam órfãos.

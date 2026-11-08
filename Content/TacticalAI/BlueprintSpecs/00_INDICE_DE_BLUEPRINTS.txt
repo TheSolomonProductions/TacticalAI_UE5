@@ -1,0 +1,45 @@
+ÍNDICE DE BLUEPRINT SPECS
+=========================
+
+Cada arquivo define asset conceitual e seu grafo/eventos. Implementar como Blueprint class derivado de base C++ quando marcado “Base C++”; para comportamento complexo manter lógica em C++ e expor parâmetros.
+
+CORE
+- Core/BP_TacticalAIController_BP.txt
+- Core/BP_TacticalBotPawn_BP.txt
+- Core/BP_BotIntentExecutor_BP.txt
+
+PERCEPTION / BELIEFS
+- Perception/BP_BotPerceptionComponent_BP.txt
+- Perception/BP_BeliefComponent_BP.txt
+
+BRAIN / LAYERS
+- Brain/BP_BotBrainComponent_BP.txt
+- Layers/BPL_Layer_Survive_BP.txt
+- Layers/BPL_Layer_AvoidGrenade_BP.txt
+- Layers/BPL_Layer_Engage_BP.txt
+- Layers/BPL_Layer_Investigate_BP.txt
+- Layers/BPL_Layer_Search_BP.txt
+- Layers/BPL_Layer_SquadOrder_BP.txt
+- Layers/BPL_Layer_Objective_BP.txt
+- Layers/BPL_Layer_Patrol_BP.txt
+- Layers/BPL_Layer_Idle_BP.txt
+- Layers/BPL_Layer_Traversal_BP.txt
+- Layers/BPL_Layer_Suppressed_BP.txt
+
+TACTICS / SQUAD / COMBAT / EXECUTION
+- Tactics/BP_CoverPoint_BP.txt
+- Tactics/BP_CoverCoordinator_BP.txt
+- Squad/BP_TacticalSquad_BP.txt
+- Squad/BP_SquadPlanner_BP.txt
+- Squad/BP_BarkQueue_BP.txt
+- Squad/BP_SquadTokenPool_BP.txt
+- Combat/BP_BotCombatComponent_BP.txt
+- Combat/BP_AimModel_BP.txt
+- Combat/BP_MoraleModel_BP.txt
+- Combat/BP_SuppressionModel_BP.txt
+- Perception/BP_HearingModel_BP.txt
+- Execution/BP_BotMovementExecutor_BP.txt
+- Execution/BP_BotAnimationBridge_BP.txt
+- Debug/BP_BotDebugVisualizer_BP.txt
+
+DataAssets, EQS, StateTrees e cenários de teste têm índices próprios nas pastas correspondentes.

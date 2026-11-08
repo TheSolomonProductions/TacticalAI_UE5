@@ -1,0 +1,12 @@
+BLUEPRINT SPEC — BP_SuppressionModel
+====================================
+
+Entrada: near misses, impacto em cobertura, tiros próximos percebidos e tempo DeltaSeconds. Supression em [0,1].
+OnNearMiss: somar intensidade por distância/arma, clamp a 1. OnDamage/Explosion: ajustar por perfil e exposição.
+Update: decair com curva/taxa configurada. Eventos em thresholds com histerese.
+Efeitos consumidos por sistemas separados:
+- AimModel aumenta erro.
+- Engage reduz probabilidade/duração de peek.
+- Movement/stance favorece postura baixa e cobertura.
+- MoraleModel reduz moral.
+Não transformar supressão em controle determinístico; expor magnitude e fonte no debug.

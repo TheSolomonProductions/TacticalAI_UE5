@@ -1,0 +1,12 @@
+STATETREE SPEC — ST_EngageCycle
+===============================
+
+Root: avaliar belief alvo e condição de sobrevivência; Survive/AvoidGrenade são layers globais superiores.
+States:
+Approach: ameaça conhecida fora da faixa da arma; query FindAdvancePosition; suprimir se rol/token habilita.
+TakeCover: sob fogo ou sem cover; FindCover; claim point; mover/agachar. Exit quando posição estável ~0,3s.
+PeekAndFire: em cover e belief suficiente; aguardar reação/peek window; pedir Attack token; AimModel; rajada; voltar à cover; sair por munição/supressão/dano/duração.
+RepositionFlank: cover comprometido ou ordem de flanco; FindFlankPosition; token flank; cobertura do squad.
+RetreatHeal: condição local de HP/moral/ammo; solicitar retirada/recarga fora de LOS.
+Search: alvo perdido com confidence>0,2; ir à última posição e varrer SearchPoints.
+Transitions explícitas; OnExit de cada state libera token/claim ou transfere ownership. Log reason em cada transição.

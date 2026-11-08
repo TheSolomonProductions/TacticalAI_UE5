@@ -1,0 +1,9 @@
+BLUEPRINT SPEC — BPL_Layer_Survive
+==================================
+
+Prioridade sugerida: 80. MinRunTime: 1,0 s inicial. Interruptível: sim após condição estabilizar.
+Evaluate: HP% < Profile.RetreatHP OU morale < MoraleRetreatThreshold OU condição de perigo crítico; aplicar histerese para sair (ex.: HP > limiar + 15%).
+OnEnter: reason code Survive; solicitar Cover query de retirada; cessar ataque agressivo; bark ferido/retirada se cooldown permite.
+Tick: solicitar FindRetreat; mover para ponto com proteção e rota de fuga; recarregar/curar somente fora de LOS e se suportado pelo jogo; manter olhar para ameaça conhecida; emitir intent de recuo.
+OnExit: liberar claim de cobertura exclusiva da layer; limpar intent de recuo.
+Não usar posição real do player; somente beliefs e squad data.

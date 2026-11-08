@@ -1,0 +1,10 @@
+ÍNDICE DE DATAASSETS
+====================
+
+DA_BotProfile_DA.txt — cognição, mira, personalidade, tática e overrides.
+DA_DifficultyTier_DA.txt — curvas/faixas por nível de dificuldade.
+DA_BrainDefinition_DA.txt — tag do brain, layers, prioridade, requisitos por tags.
+DA_CoverBakeData_DA.txt — pontos estáticos de cobertura por nível (gerado em ferramenta).
+DA_TacticalTuning_DA.txt — parâmetros globais nomeados por domínio, se não pertencerem a Profile/Tier.
+
+Convenção real do asset: DA_ + tipo/nome, por exemplo DA_BotProfile_Recruit.

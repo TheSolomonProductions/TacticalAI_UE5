@@ -1,0 +1,12 @@
+BLUEPRINT SPEC — BP_HearingModel / FHearingModel
+================================================
+
+Base C++ como função de percepção; BP configura tabela de estímulos/filtros.
+Fórmulas iniciais:
+Perceived = Loudness * 1/(1+(d_effective/d0)^2) * Occlusion
+d_effective = max(EuclideanDistance, 0,8*NavMeshPathDistance)
+Occlusion = 0,6^(solid surfaces count)
+AngularErrorDeg = Kerror*(1-Perceived)*(distance/10m)
+
+Exemplos de entrada (loudness/range máx): tiro sem supressor 1,0/80m; suprimido 0,3/25m; explosão 1,0/120m; corrida 0,5/15m; andando 0,2/6m; agachado 0,05/3m; porta/objeto 0,4/12m; bala passando 0,6/15m; bark 0,5/20m.
+Piso (Physical Material) modula passos. O evento cria posição estimada e uncertainty; não aciona Engaged automaticamente. Explosão pode forçar Investigate mesmo em patrulha.

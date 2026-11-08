@@ -1,0 +1,6 @@
+EQS SPEC — FindAdvancePosition
+==============================
+
+Generator: pontos à frente na direção da ameaça conhecida, próximos do objetivo e da rota navegável.
+Tests: NavPath; cobertura intermediária; exposure path; distance to threat belief; line-of-fire ally safety; proximidade de aliados/formation.
+Score por progresso, proteção e custo de exposição. Usado por AdvanceByBounds, com um grupo suprimindo e outro avançando.

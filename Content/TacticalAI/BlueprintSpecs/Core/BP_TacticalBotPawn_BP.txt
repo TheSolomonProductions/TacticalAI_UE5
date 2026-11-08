@@ -1,0 +1,20 @@
+BLUEPRINT SPEC — BP_TacticalBotPawn
+===================================
+
+Tipo: Blueprint child de Pawn/Character de gameplay; controlador IA é ATacticalAIController.
+COMPONENTES: Capsule/CharacterMovement; SkeletalMesh; Weapon component existente do jogo; Health/Armor; FootstepNoiseEmitter; Team component/tag; optional SmartObject/interaction component.
+
+VARIÁVEIS
+Health, MaxHealth, Armor, Stance, MovementNoiseScale, TeamId, bIsAlive, bIsSuppressed, AimTargetRotation (replicada para apresentação conforme arquitetura de rede).
+
+EVENTOS
+OnTakeDamage: encaminhar evento de dano e direção aproximada ao controller; não atualizar crença com coordenada secreta do atacante.
+OnFootstep: ReportNoiseEvent com loudness calculado por velocidade, postura e Physical Material.
+OnDeath: bIsAlive=false; avisar controller/squad; liberar recursos; iniciar ragdoll/morte conforme jogo.
+OnRep_Stance/Aim: atualizar animação; não replicar estado interno inteiro da IA.
+
+FUNÇÕES
+SetStance; EmitNoise; GetAimOrigin; IsAlive; CanBeSeenFrom para amostras de sockets (cabeça, tronco, pelve, ombros, pernas), retornando fração exposta ao sensor.
+
+ANIMAÇÃO
+Aim Offset/upper body; postura; peek/lean; notifies sincronizam disparo e dano. O bot continua usando percepção imperfeita do controller.

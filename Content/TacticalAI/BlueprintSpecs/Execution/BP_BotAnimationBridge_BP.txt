@@ -1,0 +1,14 @@
+BLUEPRINT SPEC — BP_BotAnimationBridge
+======================================
+
+Responsabilidade: traduzir estado de movimento/intent/eventos para AnimInstance e sinais visuais; não decidir tática.
+Inputs: velocity, stance, aim rotation, fire/reload state, peek side, traversal state, hit/suppression reaction, alive state.
+Graphs:
+- Locomotion: idle/walk/run/crouch; footstep notifies enviam ruído conforme velocidade, stance e material do piso.
+- Upper body: Aim Offset separado do giro corporal; layer de tiro/recarga.
+- Peek/lean: sincronizar com estado PeekAndFire e exposição tática.
+- Traversal: montage + notify/link complete, reportado à layer Traversal.
+- Fire: Anim Notify chama Server-authoritative Combat FireAtNotify; animação e registro de dano sincronizados.
+- Damage/suppression: variações de reação para não repetir sempre o mesmo montage.
+- Telegraphing: lantern/laser, gesto e bark antes de investida/granada quando apropriado.
+Replicar somente parâmetros de apresentação necessários; decisões permanecem servidor-side.

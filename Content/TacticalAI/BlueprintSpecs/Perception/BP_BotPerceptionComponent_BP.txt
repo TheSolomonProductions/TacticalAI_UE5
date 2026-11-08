@@ -1,0 +1,19 @@
+BLUEPRINT SPEC — BP_BotPerceptionComponent
+==========================================
+
+Base: UBotPerceptionComponent sobre UAIPerceptionComponent. Blueprint child apenas configura senses e mapeia tags.
+CONFIGURAÇÃO: Sight, Hearing, Damage e Team. Channel/TeamAttitude devem corresponder às regras do jogo.
+
+EVENT OnTargetPerceptionUpdated(Actor, Stimulus):
+1. Validar equipe/ator e stimulus válido.
+2. Sight: chamar FSightEvaluator para cone, múltiplos pontos, distância, exposição e perfil. Atualizar awareness por delta temporal.
+3. Hearing: FHearingModel atenua distância/oclusão e adiciona incerteza de posição.
+4. Damage: gerar direção aproximada e confiança moderada.
+5. Team: marcar origem compartilhada e preservar latência/ruído.
+6. Criar FBotStimulus normalizado; Broadcast OnStimulusReceived.
+
+LIMITES
+Não escolhe layer. Early-out por distância/cone; cache LOS TTL 0,1–0,2 s; budget MaxTracesPerTick; async traces onde possível.
+
+DEBUG
+Desenhar cone/LOS, intensidade, amostras visíveis e trace descartado por budget.

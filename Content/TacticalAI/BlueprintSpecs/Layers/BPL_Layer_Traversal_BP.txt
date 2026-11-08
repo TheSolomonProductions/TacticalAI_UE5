@@ -1,0 +1,8 @@
+BLUEPRINT SPEC — BPL_Layer_Traversal
+====================================
+
+Prioridade: 90. Evaluate: Pawn iniciou Smart Nav Link (vault, escada, salto) e traversal está em progresso.
+OnEnter: marcar não-interrompível; iniciar animação/montage e link traversal.
+Tick: aguardar notify/fim real, monitorar timeout/stuck; não iniciar outro path incompatível.
+OnExit: finalizar link, restaurar movement mode e permitir decisão.
+Interrupção só por morte/estado crítico definido pelo jogo.

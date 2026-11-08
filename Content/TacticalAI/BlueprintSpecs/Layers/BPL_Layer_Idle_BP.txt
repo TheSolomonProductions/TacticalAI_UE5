@@ -1,0 +1,7 @@
+BLUEPRINT SPEC — BPL_Layer_Idle
+===============================
+
+Prioridade: 10. Fallback quando nenhuma outra layer elegível.
+OnEnter: intent neutro, conservar postura e orientação.
+Tick: pequenas variações de olhar/respiração/stance por profile, sem rondar indefinidamente.
+OnExit: cancelar timers/gestos.

@@ -1,0 +1,10 @@
+BLUEPRINT SPEC — DEAD, STUNNED E GRENade LAYERS
+================================================
+
+Estas layers de prioridade extrema devem preferir implementação C++/estado do Pawn, embora possam ter Blueprint hooks.
+
+Dead/Ragdoll (prioridade 100, não-interrompível): Evaluate HP<=0 ou IsAlive=false; liberar claims/tokens/papel; cancelar brain; emitir estado de morte uma vez; iniciar ragdoll/anim.
+
+Stunned/Blinded (prioridade 95, não-interrompível enquanto durar): Evaluate evento válido de flash/stun; cancelar mira precisa, aplicar montage/efeito, reduzir/bloquear percepção conforme duração; ao expirar, restaurar sentidos gradualmente e solicitar nova decisão.
+
+AvoidGrenade é especificada em BPL_Layer_AvoidGrenade_BP.txt (prioridade 75).

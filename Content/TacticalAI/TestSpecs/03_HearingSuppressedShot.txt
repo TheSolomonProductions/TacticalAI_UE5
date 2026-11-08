@@ -1,0 +1,5 @@
+ARENA TEST 03 — TIRO SUPRIMIDO / NÃO SUPRIMIDO
+===============================================
+Setup: mesma distância/oclusão, dois estímulos de tiro com loudness/range distintos.
+Esperado: tiro normal é percebido a maior alcance/intensidade; supressor reduz alcance; local estimado tem erro conforme intensidade/distância; sem LOS não virar visão confirmada.
+Registrar: stimulus strength, confidence, erro espacial, layer result.

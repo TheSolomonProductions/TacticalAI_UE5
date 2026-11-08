@@ -1,0 +1,12 @@
+BLUEPRINT SPEC — BP_CoverCoordinator / UCoverSubsystem facade
+============================================================
+
+Serviço C++: gerar candidates via bake + EQS; blueprint expõe tuning/debug.
+FindCover(Requester, ThreatBeliefs, ProfileWeights):
+1. Filtrar alcançabilidade, claim livre, proteção preliminar, raio de explosivo.
+2. Pontuar proteção (+3), campo de tiro (+2), proximidade (+1), flanco (0..+2), rota de fuga (+1), aglomeração (-1,5), recência (-1), exposição de rota (-2), com pesos de profile.
+3. Rodar LOS/traces apenas em top N.
+4. Tentar claim TTL ~8s; se concorreu, escolher próximo.
+5. Retornar point + score + reason.
+
+FindRetreat/Flank/Advance/Search/GrenadeThrow delegam a EQS spec. On release/death/TTL expirar atualizar debugger. Nunca reservar ponto sem owner/expiração.

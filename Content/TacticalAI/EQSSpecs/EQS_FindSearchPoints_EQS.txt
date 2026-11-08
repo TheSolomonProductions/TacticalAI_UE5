@@ -1,0 +1,6 @@
+EQS SPEC — FindSearchPoints
+===========================
+
+Generator: pontos NavMesh dentro do SearchArea, raio cresce com tempo desde última confirmação.
+Tests: não visitado; setor não coberto por aliado; reachable; visibilidade/cover local; proximidade com baixa duplicação; risco.
+Selecionar alguns setores/pontos com diversidade, não todos convergindo para uma coordenada. Ao verificar vazio, registrar área; ao receber novo estímulo, atualizar belief.

@@ -1,0 +1,9 @@
+BLUEPRINT SPEC — BP_TacticalSquad / ASquad
+==========================================
+
+Base: ASquad. Propriedades: Members, Leader, Roles, CurrentPlan, SharedBeliefs, TokenPool, BarkQueue.
+BeginPlay/registration: validar membros; eleger líder por priority/rank; atribuir papéis conforme profile, HP/armor, arma, munição e posição.
+OnMemberBeliefUpdated: enfileirar transmissão com delay aleatório 0,5–1,5s, confidence *=0,7 e ruído espacial. Cancelar se emissor morrer antes do envio quando regra aplicável.
+OnMemberDied: liberar tokens/cover; eleger novo líder; bark de baixa; reavaliar plano.
+Public API: RequestToken/ReleaseToken; BroadcastBelief; RequestPlan; ReportRoleProgress; EnqueueBark.
+Nunca fazer fanout instantâneo com confidence=1.

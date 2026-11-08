@@ -1,0 +1,5 @@
+ARENA TEST 09 — ESTABILIDADE DE LAYERS
+======================================
+Setup: HP próximo do limiar; stimulus intermitente; supressão oscilante.
+Esperado: histerese/MinRunTime/cooldown evitam alternância rápida; emergência válida ainda interrompe. DecisionTrace explica cada transição.
+Métrica: layer changes/s e taxa de transições bloqueadas por MinRunTime.

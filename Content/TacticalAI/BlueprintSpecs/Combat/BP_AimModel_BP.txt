@@ -1,0 +1,14 @@
+BLUEPRINT SPEC — BP_AimModel / UAimModel
+========================================
+
+Parâmetros de Profile: ReactionTimeRange; Accuracy 0..1; BaseAimErrorDeg; MaxAngularSpeed; BurstLength; ideal weapon range.
+Pipeline:
+1. Ao novo belief detectado, iniciar ReactionDelay amostrado pela distribuição configurada.
+2. Após delay, adquirir direção ideal a partir de LastKnownLocation/posição visível; rotacionar sob MaxAngularSpeed com amortecimento.
+3. Calcular erro base: BaseAimErrorDeg*(1 - 0,7*Skill).
+4. Multiplicar por distância, velocidade própria, suppression e dano recente; dividir por ganho progressivo de TimeOnTargetNorm (máx ~2,5x).
+5. Amostrar dispersão em cone, aplicada também ao recuo/rajada.
+6. Ao trocar alvo, resetar TimeOnTarget; se belief perde confidence, mirar posição provável com erro maior, sem seguir posição secreta.
+
+Fórmula orientativa: ErrDeg = Base*(1-0.7*Skill)*(1+KDist*Distance+KMove*SelfSpeed+KSupp*Suppression+KDmg*RecentDamage)/Lerp(1,2.5,TimeOnTargetNorm).
+Usar `VRandCone` ou implementação equivalente validada no C++ base.

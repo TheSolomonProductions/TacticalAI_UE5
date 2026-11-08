@@ -1,0 +1,6 @@
+ARENA TEST 02 — ALVO PERDIDO ATRÁS DE PAREDE
+============================================
+Setup: jogador detectado e some atrás de obstáculo; não emite som adicional.
+Esperado: bot busca última posição/área EQS; confiança cai; busca espalha por setores; termina busca e volta ao objetivo sem localizar jogador escondido.
+Falha se: Aim/Move continua acompanhando posição real; bot converge para pawn oculto.
+Registrar: confidence(t), SearchPoints, segmentos de navegação, logs anti-wallhack.

@@ -1,0 +1,11 @@
+BLUEPRINT SPEC — BP_BotCombatComponent
+======================================
+
+Base: UBotCombatComponent. Inputs: belief de alvo, intent, profile, ammo/weapon, squad tokens, suppression.
+State machine/StateTree: Approach/TakeCover/PeekFire/Reposition/Retreat/Search.
+Atirar: requer alvo acreditado; Attack token para tentativa precisa; checar LOS recente via perception/weapon trace, aliado na linha de fogo, ammo e fire cadence. Anim notify pode sincronizar disparo real.
+Peek: exposição com pausa, duração/rajada e cooldown data-driven; suppression reduz chance.
+Recarregar: preferir fora de LOS ou em cobertura; emitir bark opcional.
+Granada: requer Grenade token, cooldown bot, posição EQS/trajectory validada, segurança contra aliados/teto e distância mínima. Usar projeção/arc real.
+Suppression: tiros próximos acumulam 0..1 e decaem; impacta erro, peek, postura e moral.
+Saídas: OnActionStarted/Finished/Failed com reason para layer/trace.

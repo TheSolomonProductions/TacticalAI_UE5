@@ -1,0 +1,20 @@
+ROADMAP DE IMPLEMENTAÇÃO INCREMENTAL
+====================================
+
+F0 — Fundações: plugin/módulo, controller, contexto, intent, Pawn de teste e HUD/debug mínimo. Pronto quando bot anda e atira em alvo fixo e decisão pode ser inspecionada.
+F1 — Percepção/crenças: visão multi-ponto, Awareness, som, dano e belief state. Pronto quando incerteza aparece no debugger.
+F2 — Brain/layers: Arbiter, trace e layers Idle, Patrol, Investigate, Engage simples, Survive. Pronto sem flicker em cenários repetidos.
+F3 — Cobertura/EQS: bake/subsystem/claims/navigation filter/queries. Pronto quando bots usam cobertura e claims não conflitam.
+F4 — Combate: ciclo, mira falível, moral, supressão e granadas. Pronto quando um confronto 1v1 é legível e crível.
+F5 — Esquadrão: conhecimento atrasado, planner, papéis, tokens, barks. Pronto quando squad alterna supressão/avanço/flanco.
+F6 — Perfis/dificuldade: tiers, personalidades, DataAssets e registro extensível de layers. Pronto quando diferenças são perceptíveis sem trapaça.
+F7 — Performance/rede/polish: AI LOD, replicação, soak, profiling, métricas e refinamento. Pronto quando orçamento e estabilidade em soak forem atingidos.
+
+As durações de referência do PDF (1–4 semanas por fase com 1–2 engenheiros) são somente estimativas indicativas.
+
+CRITÉRIOS TRANSVERSAIS DE CONCLUSÃO
+- Cada comportamento tem um caso funcional e uma razão observável.
+- Claims/tokens são liberados ao sair/morrer/cancelar.
+- Nenhuma alocação por tick em caminhos quentes após otimização.
+- Valores editáveis em DataAssets/curvas, sem constantes mágicas dispersas.
+- Performance medida no hardware alvo; rede validada em servidor.

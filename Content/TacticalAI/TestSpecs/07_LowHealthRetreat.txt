@@ -1,0 +1,5 @@
+ARENA TEST 07 — RETIRADA COM HP BAIXO
+=====================================
+Setup: HP abaixo do limiar; ameaça acreditada; uma posição segura disponível.
+Esperado: Survive assume acima de Engage; recua para cover, cura/recarrega se suportado e fora de LOS; histerese impede flicker ao cruzar limiar.
+Registrar: layer, Morale, claim lifecycle, TTFS/dano recebido.

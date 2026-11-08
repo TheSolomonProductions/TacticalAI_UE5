@@ -1,0 +1,8 @@
+STATETREE SPEC — ST_Patrol
+==========================
+
+Enter: buscar rota atribuída ou POI; ChooseWaypoint pondera distância/recência.
+MoveToWaypoint: usar intent e NavMesh; stuck -> replan + trace.
+PauseAtPOI: observar/escutar por tempo profile; pequena variação de direção/stance.
+NextWaypoint: selecionar próximo sem repetição previsível.
+Stimulus com score alto interrompe e solicita Investigate; visão detectada permite Engage.

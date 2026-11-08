@@ -1,0 +1,9 @@
+STATE TREE SPECS
+================
+
+ST_EngageCycle_ST.txt — submáquina central de combate.
+ST_Investigation_ST.txt — aproximação cautelosa, scan, retorno.
+ST_Patrol_ST.txt — waypoint/POI, pausa, varredura.
+ST_Breach_ST.txt — stack, flash/granada, entry e clear por setor (feature opcional).
+
+Uma StateTree roda dentro de sua layer; não substitui o arbiter global. Saídas devem ser explícitas e devem cancelar intent/query/claim conforme necessário.

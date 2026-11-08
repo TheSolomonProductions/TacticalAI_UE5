@@ -1,0 +1,10 @@
+BLUEPRINT SPEC — BP_MoraleModel
+===============================
+
+Função pura: ComputeMorale(ProfileDiscipline, NearbyAllies, KnownThreatCount, Suppression, HPFraction, AmmoFraction) -> 0..1.
+Fórmula inicial documentada:
+Morale = clamp(BaseDiscipline + 0,30*(NearbyAllies/3) - 0,25*(KnownThreatCount/3) - 0,40*Suppression - 0,30*(1-HPFraction) - 0,15*(AmmoFraction<0,25), 0, 1).
+
+Decisão: se Morale < RetreatThreshold, Survive/Retreat pode ativar; retornar a combater só quando Morale > RetreatThreshold + 0,15 (histerese). Threshold/weights ajustáveis por perfil e playtest.
+Nunca usar dados secretos do mundo; KnownThreatCount vem de beliefs com confidence mínima.
+Debug: valores de cada termo, threshold e resultado para explicar recuo.

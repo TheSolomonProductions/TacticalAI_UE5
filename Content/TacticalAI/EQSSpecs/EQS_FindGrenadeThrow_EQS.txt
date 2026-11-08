@@ -1,0 +1,6 @@
+EQS SPEC — FindGrenadeThrow
+===========================
+
+Generator: posição de lançamento alcançável dentro de alcance para posição belief da ameaça.
+Tests: trajetória `SuggestProjectileVelocity` válida; linha sem obstrução; distância de segurança do lançador; ausência de aliados no raio; teto/obstáculo; risco/custo de deslocamento.
+Prerequisitos: ameaça conhecida em cobertura por tempo configurado; grenades >0; Grenade token; cooldown expirado. O resultado deve informar trajetória e confidence/location age usada.

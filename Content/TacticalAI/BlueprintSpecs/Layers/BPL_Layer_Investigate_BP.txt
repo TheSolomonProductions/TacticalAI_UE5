@@ -1,0 +1,8 @@
+BLUEPRINT SPEC — BPL_Layer_Investigate
+======================================
+
+Prioridade: 50. Evaluate: crença Suspected ou stimulus som/objeto com força acima do limiar; sem ameaça Engaged.
+OnEnter: usar localização percebida e sua incerteza; parar breve, olhar para direção, bark “ouvi algo” opcional.
+Tick: mover para posição investigável, não necessariamente ponto exato; reduzir velocidade/ruído; ao chegar, varrer ângulos e aguardar janela de observação; atualizar belief via sensores.
+Concluir: stimulus expira/sem evidência e confiança abaixo do limiar -> Patrol/Objective; nova detecção -> Engage pela prioridade.
+Não ir ao pawn real; som fraco/distante significa maior erro de localização.

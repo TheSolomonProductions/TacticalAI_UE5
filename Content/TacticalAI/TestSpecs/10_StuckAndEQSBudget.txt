@@ -1,0 +1,5 @@
+ARENA TEST 10 — STUCK E ORÇAMENTO EQS
+=====================================
+Setup: rota parcialmente bloqueada + muitos bots consultando cover/find points.
+Esperado: detecção de stuck ativa replanejamento; EQS e traces respeitam budget por frame; cache/stagger mantém p95 dentro do alvo medido.
+Registrar: queries/frame, tempo EQS, async trace count, CPU/bot, time-to-recover.

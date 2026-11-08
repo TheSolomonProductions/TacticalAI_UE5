@@ -1,0 +1,7 @@
+EQS SPEC — FindFlankPosition
+============================
+
+Generator: arco lateral ao redor de LastKnownLocation da ameaça belief, ancorado na incerteza e no NavMesh.
+Tests: reachability; ângulo mínimo de flanco; rota protegida/sem LOS direta na aproximação; distância ideal da arma; cover available; exposure path; posição de peek pode observar belief-location.
+Score: ângulo lateral + rota de fuga + proteção - exposição - custo de rota - recência.
+Só solicitar se squad plan/role autoriza e Flank token foi/será adquirido. Não contornar para posição real atual se belief antiga.

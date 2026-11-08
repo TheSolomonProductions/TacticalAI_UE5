@@ -1,0 +1,31 @@
+RISCOS E CODE REVIEW
+====================
+
+BOT ONISCIENTE OU PERFEITO
+Sinais: mira instantânea, posição exata após perder contato, tiros através de cobertura. Revisar acesso a pawn, aplicar crenças, latência e erro graduais.
+
+FLICKER
+Sinais: troca de layer ou destino várias vezes por segundo. Conferir limiares diferentes de entrada/saída, MinRunTime, cooldown, compromisso não-interrompível e trace.
+
+OSCILAÇÃO DE COBERTURA
+Sinais: corre entre dois pontos ou reserva fantasma. Conferir claim TTL/renew/release, penalidade de recência e tempo de compromisso.
+
+STARVATION DE TOKENS
+Sinais: bot nunca pode atacar/falar/flanquear. Conferir fila por idade, release em todas as saídas e máximo/cooldown.
+
+ESQUADRÃO PREVISÍVEL OU “MENTE COLETIVA”
+Conferir ruído de Utility/repetição e latência/perda/erro de comunicação.
+
+PERFORMANCE
+Picos de visão/EQS: early-out, orçamento, cache, staggering, async trace e AI LOD. Confirmar Unreal Insights.
+
+CHECKLIST POR PR
+[ ] Layer lê apenas FBotContext/beliefs/services permitidos.
+[ ] Nenhuma busca global de player em layer/task/context EQS.
+[ ] Toda transição tem motivo.
+[ ] Estado temporal tem histerese/cooldown/MinRunTime apropriado.
+[ ] Intent expira ou é substituído corretamente.
+[ ] Claim e token liberados em conclusão/cancelamento/morte.
+[ ] Parâmetros vêm de DataAsset/curva.
+[ ] Fogo verifica aliado e token.
+[ ] Cenário reproduzível e métrica definida.

@@ -1,0 +1,16 @@
+BLUEPRINT SPEC — BP_SquadTokenPool / FTokenPool
+===============================================
+
+Base recomendado: serviço C++ determinístico; Blueprint somente configura máximos/cooldowns e visualiza estado.
+Tipos iniciais: Attack, Flank, Grenade, Bark. Estado por token: MaxHolders, Holders, CooldownUntil, WaitSince por requester.
+
+TryAcquireToken(Type, Requester, Now):
+1. Se Requester já é holder, retornar granted (idempotente).
+2. Se cooldown ativo ou holders >= Max, negar com reason.
+3. Registrar WaitSince se ausente; se outro requester tem idade de espera maior, negar.
+4. Conceder ao mais antigo, remover da fila e registrar acquire time.
+ReleaseToken(Type, Requester, Now): remover holder; se cooldown do token/ação aplicável, definir CooldownUntil; emitir evento.
+Tick de manutenção: remover requesters inválidos; nunca permitir token órfão.
+
+Defaults de tuning: Attack 1–4 conforme tier; Flank max 1/cooldown 10–20s; Grenade max 1/cooldown 8–15s; Bark max 1/cooldown ~1,5s.
+Todo dono libera em OnExit, morte, cancelamento e fim de ação. Log reason de grant/deny/release para auditar fairness/starvation.

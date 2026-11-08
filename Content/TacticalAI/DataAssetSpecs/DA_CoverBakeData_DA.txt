@@ -1,0 +1,8 @@
+DATAASSET SPEC — FCoverBakeData
+===============================
+
+DataAsset por mapa contém FCoverPoint estáticos: ID estável, localização, normal protegida, altura Low/High, PeekMask, ProtectionArc, Capacity, tags, qualidade de bake.
+Bake valida: superfície/collision, altura/largura, rota de entrada/saída, nav reachability, posição de peek e geometria.
+Runtime reservado não é salvo dentro do asset; UCoverSubsystem mantém claims/occupants.
+Para cobertura dinâmica, gerar fallback EQS com grade e traces limitados.
+Editor visualiza normal, capacidade, peek e erro de validação.

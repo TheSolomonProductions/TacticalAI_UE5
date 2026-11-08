@@ -1,0 +1,8 @@
+BLUEPRINT SPEC — BPL_Layer_SquadOrder
+=====================================
+
+Prioridade: 55. Evaluate: existe ordem ativa atribuída ao membro e não há urgência maior.
+OnEnter: ler role/order + expiry do ASquad; emitir bark tático conforme cooldown.
+Tick: executar papel Suppress/Flank/Advance/Hold/RearGuard via intents e queries táticas; respeitar token requerido; reportar progresso/falha ao planner.
+OnExit: liberar claims/tokens e reportar status cancelado.
+Ordens não anulam layer Survive, AvoidGrenade, Dead, Stun ou Traversal. Evitar acesso direto aos inimigos; usar beliefs compartilhadas com ruído/idade.

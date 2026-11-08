@@ -1,0 +1,9 @@
+BLUEPRINT SPEC — BPL_Layer_Engage
+=================================
+
+Prioridade: 70. StateTree/BT interno: ST_EngageCycle. Evaluate: belief Detected/Engaged com confidence mínima ou ameaça visível/atirando.
+OnEnter: selecionar belief alvo por score (risco, confidence, proximidade tática); emitir bark contato se permitido; iniciar estado de combate.
+Tick: executar ST_EngageCycle; receber resultado/status e gravar intent. Solicitar Attack token antes de fogo preciso. Sem token: manter cobertura/supressão/reposicionar.
+OnExit: cancelar ação/queries; liberar token se dono; liberar claim não compartilhado; invalidar intent de fogo.
+Estados ST: Approach, TakeCover, PeekAndFire, Reposition/Flank, Retreat/Heal, Search. Ver StateTreeSpecs/ST_EngageCycle_ST.txt.
+Condição de saída: sem ameaça útil -> Investigate/Search/Patrol conforme beliefs; HP/morale baixo -> Survive pela prioridade superior.

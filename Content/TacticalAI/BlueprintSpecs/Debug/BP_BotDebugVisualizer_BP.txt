@@ -1,0 +1,7 @@
+BLUEPRINT SPEC — BP_BotDebugVisualizer
+======================================
+
+Ativado por console/cvar e somente em desenvolvimento.
+Exibir sobre bot: layer ativa e Evaluate scores; motivo da transição; crenças (estado, confidence, age, uncertainty, last known location); awareness; path/nav cost; cover point/claim TTL; role/plan/token; HP/morale/suppression; current intent.
+Desenhos: cone de visão sensor (não informação privilegiada); locais de som estimados; linha de ameaça conforme belief; cobertura/arc/peek; search sectors; rota considerada e descartada.
+Usar Gameplay Debugger + Visual Logger/DecisionTrace no C++; Blueprint é só apresentação. Não expor debug ao jogador final.

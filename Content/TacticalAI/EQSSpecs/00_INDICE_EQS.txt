@@ -1,0 +1,11 @@
+ÍNDICE EQS
+==========
+
+EQS_FindCover_EQS.txt
+EQS_FindFlankPosition_EQS.txt
+EQS_FindAdvancePosition_EQS.txt
+EQS_FindSearchPoints_EQS.txt
+EQS_FindRetreat_EQS.txt
+EQS_FindGrenadeThrow_EQS.txt
+
+Princípio: context de ameaça recebe FThreatBelief/última posição; context não busca PlayerPawn. Ordenar filtros baratos antes de LOS/traces. Usar limites/cancelamento/cache.

@@ -1,0 +1,8 @@
+BLUEPRINT SPEC — BP_CoverPoint
+==============================
+
+Tipo: Actor/actor data marker para autoria visual; runtime pode ser instanciado pelo bake de FCoverPoint.
+Dados: CoverPointId; Location; Normal protegido; Height Low/High; PeekMask Left/Right/Top; ProtectionArc; Capacity; tags de tipo; StaticScore modifiers.
+Construction Script: gizmo/editor visualization, validação de normal e altura; não executar traces pesados em runtime Construction Script.
+Runtime: reserva fica em UCoverSubsystem, não neste actor. Claims: Owner, Expiry, Priority somente para debug/visualização.
+Editor: cor verde livre, amarelo ocupado, vermelho inválido; mostrar arc e peek directions.

@@ -1,0 +1,22 @@
+BLUEPRINT SPEC — BP_BotBrainComponent
+=====================================
+
+Base: UBotBrainComponent. Blueprint define dados e debug; arbiter deve permanecer C++ para estabilidade/performance.
+
+SETUP
+BrainDefinition; layer entries ordenadas por PriorityOverride ou prioridade base; Tags do bot/mapa/facção/papel; EmergencyPriority; DecisionInterval 0,1–0,3 s; random jitter.
+
+FUNCTION Decide(Now):
+1. Criar/atualizar FBotContext read-only + IntentWriter.
+2. Avaliar layers em prioridade decrescente; score > 0 indica elegível.
+3. Melhor elegível vence (tie: maior score; empate estável pelo registro).
+4. Se diferente da ativa, verificar interruptível + MinRunTime ou emergência.
+5. Chamar OnExit(active), registrar DecisionTrace com motivo/scores, definir ActiveSince e OnEnter(best).
+6. Chamar Tick da layer ativa no intervalo configurado; publicar/expirar intent.
+7. Atualizar debug.
+
+ESTABILIDADE
+Histerese no estado (entrada e saída separados); MinRunTime inicial ~0,6 s; ações de travessia/granada podem bloquear interrupção; jitter evita sincronização.
+
+FALLBACK
+Se nenhuma layer elegível, activar Idle. Se brain inválido, log erro e manter intent neutro.

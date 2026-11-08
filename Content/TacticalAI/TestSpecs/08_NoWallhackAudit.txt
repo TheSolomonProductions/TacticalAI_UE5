@@ -1,0 +1,4 @@
+AUDITORIA 08 — ANTI-WALLHACK
+============================
+Verificar code search/lint em Layers, StateTrees, EQS Contexts e Tasks para chamadas globais que localizam jogador. Confirmar dependência apenas de FBotBelief/FBotStimulus; sensor de visão autorizado é a única fonte de confirmação visual.
+Teste de runtime: mover alvo invisível sem ruído após perder LOS; decisão não deve seguir movimento real.

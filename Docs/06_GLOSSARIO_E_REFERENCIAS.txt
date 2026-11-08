@@ -1,0 +1,23 @@
+GLOSSÁRIO
+=========
+
+Brain: conjunto ordenado de layers para um tipo de bot.
+Layer: unidade de decisão com condição, prioridade e comportamento ativo.
+Intent: pedido de ação emitido por layer e consumido pelos executores.
+Belief/crença: informação estimada sobre ameaça, acompanhada de confiança e idade.
+Awareness: acumulador de consciência do alvo (0–1,5 na proposta).
+Token: recurso limitado que autoriza ação coordenada.
+EQS: Environment Query System; gera e pontua posições espaciais.
+Telegraphing: sinal que torna intenção do bot legível ao jogador.
+AI LOD: redução de custo conforme relevância para o jogador.
+Histerese: limiares de entrada/saída diferentes para reduzir oscilação.
+
+REFERÊNCIAS CITADAS NO DOCUMENTO BASE
+- J. Orkin, “Three States and a Plan: The A.I. of F.E.A.R.”, GDC 2006.
+- D. Isla, “Handling Complexity in the Halo 2 AI”, GDC 2005.
+- R. Straatman, A. Beij, W. van der Sterren, “Killzone's AI: Dynamic Procedural Combat Tactics”, GDC 2005.
+- Game AI Pro; D. Mark, Behavioral Mathematics for Game AI.
+- Documentação Unreal: AI Perception, EQS, StateTree, Gameplay Debugger, Visual Logger, Smart Objects, Game Features.
+- SPT-BigBrain (DrakiaXYZ), referência de brains/layers extensíveis.
+
+Verificar documentação oficial e APIs na versão alvo antes de implementar.

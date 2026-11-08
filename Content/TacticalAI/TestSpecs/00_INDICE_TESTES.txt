@@ -1,0 +1,16 @@
+TEST SPECS E ARENAS
+===================
+
+Implementar via AutomationSpec/unit, AFunctionalTest/arena e soak headless. Casos mínimos:
+01 FlankDetection.txt
+02 LostTargetBehindWall.txt
+03 HearingSuppressedShot.txt
+04 SharedCoverReservation.txt
+05 SquadAttackTokenLimit.txt
+06 LeaderDeath.txt
+07 LowHealthRetreat.txt
+08 NoWallhackAudit.txt
+09 LayerFlicker.txt
+10 StuckAndEQSBudget.txt
+
+Métricas transversais: TTFS, uso de cover, sucesso de flanco, starvation tokens, stuck, layers/sec, latência p95 e ms/bot.

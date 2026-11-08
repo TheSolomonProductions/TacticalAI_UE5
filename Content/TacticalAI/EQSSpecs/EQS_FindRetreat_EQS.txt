@@ -1,0 +1,6 @@
+EQS SPEC — FindRetreat
+======================
+
+Generator: pontos atrás/lateralmente ao bot, fora do perigo conhecido.
+Tests: distância suficiente da ameaça belief; boa proteção; rota navegável com custo de exposição baixo; proximidade de aliados/médico/cover; saída de emergência; sem aglomeração.
+Não usar localização atual não percebida. Retornar ponto + reason. Layer Survive reserva e mantém claim durante retirada.

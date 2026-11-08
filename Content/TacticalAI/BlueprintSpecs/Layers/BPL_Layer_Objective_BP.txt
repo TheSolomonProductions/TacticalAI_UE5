@@ -1,0 +1,8 @@
+BLUEPRINT SPEC — BPL_Layer_Objective
+====================================
+
+Prioridade: 40. Evaluate: mission objective válido atribuído e não há estado mais urgente.
+OnEnter: selecionar subobjetivo compatível com squad plan e role.
+Tick: mover/defender/ocupar/escoltar/assaltar via intents; caminho pelo NavMesh/filtro tático; reportar progresso.
+OnExit: cancelar path e atualizar objetivo apenas por evento/estado do jogo.
+Layer não percebe inimigos por conta própria; combate/investigação podem assumir por prioridade.

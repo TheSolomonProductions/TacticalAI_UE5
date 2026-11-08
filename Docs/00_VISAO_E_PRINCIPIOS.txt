@@ -1,0 +1,36 @@
+VISÃO DO SISTEMA
+================
+
+Produto: arquitetura de IA tática para bots de FPS na Unreal Engine 5.
+Objetivo: bots que aparentam competência, mas não são oniscientes. Devem perceber com atraso e incerteza, manter crenças, usar cobertura, coordenar o esquadrão e cometer erros legíveis e justos.
+
+ESCOPO COBERTO
+- Visão, audição, dano e estímulos de equipe.
+- Awareness, crenças de ameaça, memória e busca.
+- Brain modular com layers priorizadas e arbitragem estável.
+- Cobertura, EQS, movimento tático, combate, moral e supressão.
+- Esquadrão, plano, papéis, tokens e comunicação.
+- Execução de movimento, mira falível, animação e telegraphing.
+- Perfis, personalidades e dificuldade.
+- Servidor autoritativo, performance, debug, testes e roadmap.
+
+FORA DO ESCOPO INICIAL
+Aprendizado de máquina/RL; IA de veículos; diálogo narrativo; criação de ferramentas completas de level design além dos dados/bake de cobertura; balanceamento de armas.
+
+PRINCÍPIOS NÃO NEGOCIÁVEIS
+1. O bot não consulta a posição real do jogador para decidir. Consulta apenas crenças derivadas de sensores e comunicação.
+2. Percepção emite estímulos; brain/layers tomam decisões.
+3. Layers consultam FBotContext, crenças e dados; não acessam diretamente o mundo do jogador.
+4. Layers escrevem FBotIntent; executores movem, miram e atiram.
+5. Dificuldade vem de latência, chance de perceber, erro de mira, moral e coordenação calibrados; não de dano escondido ou visão através de paredes.
+6. Toda decisão importante deve ser observável e ter motivo registrado.
+7. Conteúdo e tuning são data-driven; valores iniciais devem ser mensuráveis e ajustáveis.
+8. Sinais visuais/sonoros informam o jogador sobre ações relevantes.
+
+MODELO MENTAL
+Mundo -> Percepção -> Estímulos -> Crenças -> Arbiter/Layer -> Intents -> Executores -> Pawn
+                                  ^                         |
+                                  +---- Esquadrão/Planner ---+
+
+REGRAS DE LEITURA
+Este scaffold transforma uma proposta de referência em especificações iniciais. Ele não prova compatibilidade de API nem substitui decisões de implementação após inspeção do projeto UE real.

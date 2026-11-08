@@ -1,0 +1,11 @@
+DATAASSET SPEC — UBotBrainDefinition
+====================================
+
+PrimaryDataAsset: DA_BrainDefinition_<Tipo>. BrainTag (GameplayTag); array LayerEntries (instanced class/object, PriorityOverride, Requires GameplayTagQuery); EmergencyPriority; decision interval/jitter profile.
+
+Brain.Rifleman: Dead 100; Stunned 95; Traversal 90; Survive 80; AvoidGrenade 75; Engage 70; Suppressed 60; SquadOrder 55; Investigate 50; Search 45; Objective 40; Patrol 30; Idle 10.
+
+Brain.Marksman: mesma segurança; overrides para manter distância/posição, menor agressividade de flanco, prioridade tática de campo de tiro.
+Brain.Boss.Heavy: mesmo conjunto de contrato; perfil e layers extras podem registrar por plugin, sem duplicar arbiter.
+
+Validar: uma layer fallback; prioridades sem ambiguidades inexplicáveis; Requires só usa tags conhecidas; emergência não pode ser usada como atalho de gameplay sem revisão.

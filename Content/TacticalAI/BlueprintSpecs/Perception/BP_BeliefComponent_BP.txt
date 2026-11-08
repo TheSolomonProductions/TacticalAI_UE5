@@ -1,0 +1,21 @@
+BLUEPRINT SPEC — BP_BotBeliefComponent
+======================================
+
+Base: UBotBeliefComponent. Mantém crenças e áreas de busca. Preferir estrutura nativa C++ para coleções e atualização frequente.
+
+FUNCTION ConsumeStimulus(FBotStimulus):
+1. Obter/criar FThreatBelief pela identidade da fonte sem assumir posição atual secreta.
+2. Sight confirmado: atualizar LastKnownLocation/Velocity, Confidence=1, Awareness, LastSeenTime e bVisibleNow.
+3. Hearing: atualizar localização aproximada, uncertainty e confidence proporcional a Strength; LastHeardTime.
+4. Damage: atualizar bearing/direção, confidence baixa a moderada.
+5. Team: preservar atraso, ruído e bSharedBySquad; não transformar em visão direta.
+6. Derivar Suspected/Detected/Engaged/Searching/Lost com limiares configurados.
+7. Emitir OnBeliefUpdated/OnThreatStateChanged e atualizar memória.
+
+TICK/UPDATE (intervalado)
+- Confidence decai quando não visível (default de tuning -0,15/s); extrapolação de velocity curta e limitada ao NavMesh.
+- Depois de perder contato: gerar SearchArea com raio crescente; excluir locais observados vazios.
+- Remover belief expirado conforme política; preservar alerta temporário.
+
+API READ-ONLY: GetBestThreat; GetThreatById; GetKnownThreats; GetSearchPoints; HasVisibleThreat.
+PROIBIDO: acessar GetPlayerPawn/GetAllActorsOfClass para preencher localização.

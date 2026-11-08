@@ -1,0 +1,8 @@
+EQS SPEC — FindCover
+====================
+
+Generator: pontos de UCoverSubsystem próximos ao bot e ameaças conhecidas; fallback grid limitado para cobertura dinâmica.
+Contexts: querier bot; threat beliefs válidas (location/confidence/uncertainty); profile tactical weights.
+Tests na ordem: reachability/NavPath; claim livre/capacidade; distância; fora de danger radius; proteção arc/altura; exposição do trajeto; campo de tiro via peek/LOS apenas para candidatos top N; aglomeração e recência.
+Score = soma ponderada por DA_BotProfile: Protection +3; FieldOfFire +2; Proximity +1; Flank 0..+2; EscapeRoute +1; Crowding -1,5; Recency -1; RouteExposure -2 como defaults.
+Result: CoverPointId, score, explanation. Após query tentar Claim TTL~8s; se falhar, escolher próximo candidato.
